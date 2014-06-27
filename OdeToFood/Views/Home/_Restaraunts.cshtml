@@ -1,0 +1,23 @@
+﻿@*@model IEnumerable<OdeToFood.Models.RestarauntListViewModel>*@
+@model IPagedList<RestarauntListViewModel>
+
+<div id="restarauntList">
+
+    @*the pager*@
+    <div class="pagedList" data-otf-target="#restarauntList">
+        @Html.PagedListPager(Model,page=> Url.Action("Index",new{page}),
+        PagedListRenderOptions.MinimalWithItemCountText)
+    </div>
+
+@foreach (var item in Model)
+{
+    <div>
+        <h4>@item.Name</h4>
+        <div>@item.City, @item.Country</div>
+        <div>
+            Reviews: @item.CountOfReviews
+        </div>
+        <hr />
+    </div>
+}
+ </div>
